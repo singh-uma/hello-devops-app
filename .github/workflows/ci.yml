@@ -18,8 +18,8 @@ jobs:
           --password-stdin
 
     - name: Build Docker image
-      run: docker build -t uma_devops/hello-world-app:latest .
+      run: docker build -t umasingh1107/hello-world-app:latest .
 
     - name: Push Docker image
-      run: docker push uma_devops/hello-world-app:latest
+      run: docker push umasingh1107/hello-world-app:latest
 
