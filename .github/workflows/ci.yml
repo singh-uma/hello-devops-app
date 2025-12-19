@@ -1,0 +1,25 @@
+name: Docker Build & Push
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Login to Docker Hub
+      run: |
+        echo "${{ secrets.DOCKER_PASSWORD }}" | docker login \
+          -u "${{ secrets.DOCKER_USERNAME }}" \
+          --password-stdin
+
+    - name: Build Docker image
+      run: docker build -t uma_devops/hello-world-app:latest .
+
+    - name: Push Docker image
+      run: docker push uma_devops/hello-world-app:latest
+
